@@ -1,0 +1,244 @@
+<section class="p-4">
+    <div>
+        <p-table [value]="listOfPrizoners" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+            [tableStyle]="{ 'min-width': '50rem' }"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+            [rowsPerPageOptions]="[10, 25, 50]">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th></th>
+                    <th style="text-align: center;">تاريخ الخروج</th>
+                    <th style="text-align: center;">رقم القضية</th>
+                    <th style="text-align: center;">الحكم</th>
+                    <th style="text-align: center;">وجه الاتهام</th>
+                    <th style="text-align: center;">الرقم القومى</th>
+                    <th style="text-align: center;">الاسم بالكامل</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-item>
+                <tr [class.bg-danger]="item.endDate < currentDate" [class.text-white]="item.endDate < currentDate">
+                    <td class="text-center"><a class="btn" [class.btn-outline-primary]="item.endDate > currentDate"
+                        [class.btn-outline-light]="item.endDate < currentDate"
+                        (click)="selectedPrizenoer = item;display = true"><i class="bi bi-sliders"></i></a></td>
+                    <td style="text-align: center;">{{ formatedFun (item.endDate) }}</td>
+                    <td style="text-align: center;">{{ item.kadyaNumber }}</td>
+                    <td style="text-align: center;">{{ item.judgmentTitle }}</td>
+                    <td style="text-align: center;">{{ item.accusation }}</td>
+                    <td style="text-align: center;">{{ item.nationalNumber }}</td>
+                    <td style="text-align: center;">{{ item.name }}</td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="paginatorleft">
+                <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+            </ng-template>
+            <ng-template pTemplate="paginatorright">
+                <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+            </ng-template>
+        </p-table>
+    </div>
+
+</section>
+
+
+<p-dialog dir="rtl" [(visible)]="display" [breakpoints]="{'960px': '75vw', '640px': '100vw'}" [style]="{width: '50vw'}">
+    <ng-template pTemplate="header">
+        <div class="text-end POpTextHeader  w-100">
+            إجراءات النزلاء </div>
+    </ng-template>
+
+    <div class="dialog">
+
+        من فضلك حدد الاجراء الذى سيتم اتخاذه مع هذا السجين
+
+    </div>
+
+    <ng-template pTemplate="footer">
+        <div class="d-flex justify-content-around">
+            <input type="submit" class="btn PopAcep4 mx-2 w-25 " (click)="display3 = true" value="عرض البيانات">
+            <input type="button" class="btn PopAcep1 mx-2 w-25 " (click)="SetRule(1)" value="حذف">
+            <input type="submit" class="btn PopAcep2 mx-2 w-25 " (click)="SetRule(2)" value="نقل لجهة خارجية">
+            <input type="button" class="btn PopAcep3 mx-2 w-25 " (click)="SetRule(3)" value="إلغاء">
+        </div>
+    </ng-template>
+
+</p-dialog>
+
+
+
+<p-dialog dir="rtl" [(visible)]="display2" [breakpoints]="{'960px': '75vw', '640px': '100vw'}"
+    [style]="{width: '50vw'}">
+    <ng-template pTemplate="header">
+        <div class="text-end POpTextHeader  w-100">
+            نقل نزيل لجهة خارجية</div>
+    </ng-template>
+
+    <div class="dialog">
+        <p>من فضلك ادخل اسم المكان الذي سيتم نقل السجين اليه
+        </p>
+        <div class=" col-12 pe-1">
+            <div class="mb-3">
+                <input #Place type="text" pInputText class="w-100 text-end BasicInput" dir="rtl"
+                    placeholder="اسم الجهة الخارجية">
+            </div>
+        </div>
+    </div>
+
+    <ng-template pTemplate="footer">
+        <div class="d-flex justify-content-around">
+            <input type="button" class="btn PopAcep1 mx-2 w-25 " (click)="updatePlace(Place.value)" value="حفظ">
+            <input type="button" class="btn PopAcep3 mx-2 w-25 " (click)="display2 = false ; display = true"
+                value="إلغاء">
+        </div>
+    </ng-template>
+
+</p-dialog>
+
+
+
+
+<p-dialog dir="rtl" [(visible)]="display3" [breakpoints]="{'960px': '75vw', '640px': '100vw'}"
+    [style]="{width: '80vw'}">
+    <ng-template pTemplate="header">
+        <div class="text-end POpTextHeader  w-100"> بيانات  السجين {{selectedPrizenoer.name}}</div>
+    </ng-template>
+
+    <div class="dialog ">
+        <div class="row">
+            <div class=" col-md-4 col-12 pe-1 my-3">
+                <div class="d-flex justify-content-start align-content-cenetr">
+                    <label for="">رقم مسلسل النزيل : </label>
+                    <div>{{selectedPrizenoer.serial}}</div>
+                </div>
+            </div>
+
+            <div class=" col-md-4 col-12 pe-1 my-3">
+                <div class="d-flex justify-content-start align-content-cenetr">
+                    <label for="">اسم النزيل : </label>
+                    <div>{{selectedPrizenoer.name}}</div>
+                </div>
+            </div>
+
+
+            <div class=" col-md-4 col-12 pe-1 my-3">
+                <div class="d-flex justify-content-start align-content-cenetr">
+                    <label for="">السن  : </label>
+                    <div>{{selectedPrizenoer.age}}</div>
+                </div>
+            </div>
+
+            <div class=" col-md-4 col-12 pe-1 my-3">
+                <div class="d-flex justify-content-start align-content-cenetr">
+                    <label for="">العنوان : </label>
+                    <div>{{selectedPrizenoer.adress}}</div>
+                </div>
+            </div>
+
+
+            <div class=" col-md-4 col-12 pe-1 my-3">
+                <div class="d-flex justify-content-start align-content-cenetr">
+                    <label for="">المهنة : </label>
+                    <div>{{selectedPrizenoer.judgmentTitle}}</div>
+                </div>
+            </div>
+
+
+
+            <div class=" col-md-4 col-12 pe-1 my-3">
+                <div class="d-flex justify-content-start align-content-cenetr">
+                    <label for="">الرقم القومى : </label>
+                    <div>{{selectedPrizenoer.nationalNumber}}</div>
+                </div>
+            </div>
+
+
+
+            <div class=" col-md-4 col-12 pe-1 my-3">
+                <div class="d-flex justify-content-start align-content-cenetr">
+                    <label for="">وجه التهمة : </label>
+                    <div>{{selectedPrizenoer.accusation}}</div>
+                </div>
+            </div>
+
+
+
+            <div class=" col-md-4 col-12 pe-1 my-3">
+                <div class="d-flex justify-content-start align-content-cenetr">
+                    <label for="">الحكم : </label>
+                    <div>{{selectedPrizenoer.judgmentTitle}}</div>
+                </div>
+            </div>
+
+
+            <div class=" col-md-4 col-12 pe-1 my-3">
+                <div class="d-flex justify-content-start align-content-cenetr">
+                    <label for="">رقم القضية : </label>
+                    <div>{{selectedPrizenoer.kadyaNumber}}</div>
+                </div>
+            </div>
+
+
+            <div class=" col-md-4 col-12 pe-1 my-3">
+                <div class="d-flex justify-content-start align-content-cenetr">
+                    <label for="">رقم الملف : </label>
+                    <div>{{selectedPrizenoer.fileNumber}}</div>
+                </div>
+            </div>
+
+
+            <div class=" col-md-4 col-12 pe-1 my-3">
+                <div class="d-flex justify-content-start align-content-cenetr">
+                    <label for="">رقم الجلسة : </label>
+                    <div>{{selectedPrizenoer.galsaNumber}}</div>
+                </div>
+            </div>
+
+
+
+            <div class=" col-md-4 col-12 pe-1 my-3">
+                <div class="d-flex justify-content-start align-content-cenetr">
+                    <label for="">تاريخ الجلسة : </label>
+                    <div>{{selectedPrizenoer.galsaDate | date : 'dd/MM/YYYY'}}</div>
+                </div>
+            </div>
+
+            <div class=" col-md-4 col-12 pe-1 my-3">
+                <div class="d-flex justify-content-start align-content-cenetr">
+                    <label for="">تاريخ الدخول : </label>
+                    <div>{{selectedPrizenoer.startDate | date : 'dd/MM/YYYY'}}</div>
+                </div>
+            </div>
+
+
+            <div class=" col-md-4 col-12 pe-1 my-3">
+                <div class="d-flex justify-content-start align-content-cenetr">
+                    <label for="">تاريخ الخروج : </label>
+                    <div>{{selectedPrizenoer.endDate | date : 'dd/MM/YYYY'}}</div>
+                </div>
+            </div>
+
+            <div class=" col-md-4 col-12 pe-1 my-3">
+                <div class="d-flex justify-content-start align-content-cenetr">
+                    <label for="">الجهة الخارجية : </label>
+                    <div>{{selectedPrizenoer.outSource || ' لا يوجد '}}</div>
+                </div>
+            </div>
+
+
+            <div class=" col-md-4 col-12 pe-1 my-3">
+                <div class="d-flex justify-content-start align-content-cenetr">
+                    <label for="">ملاحظات : </label>
+                    <div>{{selectedPrizenoer.Notes || ' لا يوجد '}}</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <ng-template pTemplate="footer">
+        <div class="d-flex justify-content-around">
+            <input type="button" class="btn PopAcep3 mx-2 w-25 " (click)="display3 = false ; display = true"
+                value="إلغاء">
+        </div>
+    </ng-template>
+
+</p-dialog>

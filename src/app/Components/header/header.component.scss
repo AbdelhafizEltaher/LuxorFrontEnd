@@ -1,0 +1,123 @@
+.hover {
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.logoText {
+    font-family: 'Tajawal';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    color: #FFFFFF;
+    text-decoration: none;
+    margin: 0px 1.5vw;
+    padding-top: 8px;
+    margin-left: 1vw;
+}
+
+.headerParts {
+    // position: fixed;
+    background: #111A45;
+    border-radius: 6px;
+    padding: 3vh 1vw;
+    margin: 0px 20px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width:80vw;
+    // max-width: 1205;
+}
+
+.headerName{
+    color: #fff !important;
+    font-size: 20px;
+    background-color: crimson;
+}
+
+.active {
+    background: #FFFFFF !important;
+    border-radius: 6px;
+    color: #FFFFFF;
+}
+.fullName{
+    font-family: 'Tajawal';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    color: #FFFFFF !important;
+    text-decoration: none;
+    margin: 0px 1.5vw;
+    padding-top: 8px;
+    margin-left: 1vw;
+
+ 
+}
+.nav-link {
+    height: 40px;
+    padding: 1.6vh 2.8vw;
+    margin-left: 1.5vw;
+    background: #F5F7FB;
+    border-radius: 6px;
+    font-family: 'Tajawal';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    color: #FFFFFF;
+
+    &:hover {
+        background: #111A45 !important;
+        color: #FFFFFF;
+
+    }
+}
+
+.btn {
+    color: #111A45;
+    background-color: #F5F7FB;
+
+    &:hover {
+        color: #fff;
+        background-color: #111A45;
+    }
+}
+
+@media (max-width: 1199.98px) {
+    .headerParts {
+        width: 100%;
+        padding: 20px 5px;
+    }
+
+    .logoText {
+        margin: 0px 5px;
+    }
+
+    .nav-link {
+        margin: 0px 5px;
+        padding: 10px 15px;
+    }
+}
+
+.offcanvas {
+    width: 280px;
+}
+
+
+
+
+
+
+@media (min-width: 1200px) {
+
+::ng-deep .offcanvas-backdrop.show{
+    display: none;
+}
+
+}

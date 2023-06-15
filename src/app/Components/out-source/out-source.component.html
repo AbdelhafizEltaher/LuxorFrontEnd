@@ -1,0 +1,40 @@
+<section class="p-4">
+    <div>
+        <p-table [value]="listOfPrizoners" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+            [tableStyle]="{ 'min-width': '50rem' }"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+            [rowsPerPageOptions]="[10, 25, 50]">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="text-align: center;">تاريخ الخروج</th>
+                    <th style="text-align: center;">تاريخ الدخول</th>
+                    <th style="text-align: center;">رقم الملف</th>
+                    <th style="text-align: center;">رقم القضية</th>
+                    <th style="text-align: center;">الحكم</th>
+                    <th style="text-align: center;">وجه الاتهام</th>
+                    <th style="text-align: center;">الرقم القومى</th>
+                    <th style="text-align: center;">الاسم بالكامل</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-item>
+                <tr [class.bg-danger]="item.endDate < currentDate" [class.text-white]="item.endDate < currentDate">
+                    <td style="text-align: center;">{{ formatedFun (item.endDate) }}</td>
+                    <td style="text-align: center;">{{ formatedFun(item.startDate) }}</td>
+                    <td style="text-align: center;">{{ item.fileNumber }}</td>
+                    <td style="text-align: center;">{{ item.kadyaNumber }}</td>
+                    <td style="text-align: center;">{{ item.judgmentTitle }}</td>
+                    <td style="text-align: center;">{{ item.accusation }}</td>
+                    <td style="text-align: center;">{{ item.nationalNumber }}</td>
+                    <td style="text-align: center;">{{ item.name }}</td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="paginatorleft">
+                <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+            </ng-template>
+            <ng-template pTemplate="paginatorright">
+                <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+            </ng-template>
+        </p-table>
+    </div>
+
+</section>

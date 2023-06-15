@@ -1,0 +1,62 @@
+<section class="p-4">
+    <p-table [value]="listOfPrizoners" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+        [tableStyle]="{ 'min-width': '50rem' }"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [rowsPerPageOptions]="[10, 25, 50]">
+        <ng-template pTemplate="header">
+            <tr>
+                <th></th>
+                <th style="text-align: center;">تاريخ الخروج</th>
+                <th style="text-align: center;">تاريخ الدخول</th>
+                <th style="text-align: center;">رقم الملف</th>
+                <th style="text-align: center;">رقم القضية</th>
+                <th style="text-align: center;">الحكم</th>
+                <th style="text-align: center;">وجه الاتهام</th>
+                <th style="text-align: center;">الرقم القومى</th>
+                <th style="text-align: center;">الاسم بالكامل</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-item>
+            <tr [class.bg-danger]="item.endDate < currentDate" [class.text-white]="item.endDate < currentDate">
+                <td class="text-center"><a class="btn" [class.btn-outline-primary]="item.endDate > currentDate"
+                        [class.btn-outline-light]="item.endDate < currentDate"
+                        (click)="selectedPrizenoer = item;display = true"><i class="bi bi-sliders"></i></a></td>
+                <td style="text-align: center;">{{ formatedFun (item.endDate) }}</td>
+                <td style="text-align: center;">{{ formatedFun(item.startDate) }}</td>
+                <td style="text-align: center;">{{ item.fileNumber }}</td>
+                <td style="text-align: center;">{{ item.kadyaNumber }}</td>
+                <td style="text-align: center;">{{ item.judgmentTitle }}</td>
+                <td style="text-align: center;">{{ item.accusation }}</td>
+                <td style="text-align: center;">{{ item.nationalNumber }}</td>
+                <td style="text-align: center;">{{ item.name }}</td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="paginatorleft">
+            <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+        </ng-template>
+        <ng-template pTemplate="paginatorright">
+            <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+        </ng-template>
+    </p-table>
+</section>
+
+
+<p-dialog dir="rtl" [(visible)]="display" [breakpoints]="{'960px': '75vw', '640px': '100vw'}" [style]="{width: '50vw'}">
+    <ng-template pTemplate="header">
+        <div class="text-end POpTextHeader  w-100">
+            إجراءات النزلاء </div>
+    </ng-template>
+
+    <div class="dialog">
+
+        هل تود استرجاع هذا النزيل واضافته لقائمة النزلاء
+    </div>
+
+    <ng-template pTemplate="footer">
+        <div class="d-flex justify-content-around">
+            <input type="button" class="btn PopAcep1 mx-2 w-25 " (click)="SetRule()" value="استعادة">
+            <input type="button" class="btn PopAcep3 mx-2 w-25 " (click)="display = false" value="إلغاء">
+        </div>
+    </ng-template>
+
+</p-dialog>

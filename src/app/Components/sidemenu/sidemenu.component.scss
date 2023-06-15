@@ -1,0 +1,40 @@
+#side_nav {
+    position: fixed;
+    width: 230px;
+    height: 100vh;
+    top: 20px;
+    background: #FFFFFF;
+    border-radius: 6px;
+    overflow-y: auto;
+    padding: 0px 20px;
+  }
+  .nav-item-2{
+    position:fixed ;
+    bottom: 10px;
+    cursor: pointer;
+  }
+  .nav-link {
+    width: 190px;
+    padding-top: 10px;
+    cursor: pointer;
+    height: 38px;
+    background: #FFFFFF;
+    border-radius: 6px;
+    font-family: 'Tajawal';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 20px;
+    color: #111A45;
+    &:hover {
+      background: #111A45 !important;
+      color: #FFFFFF !important;
+  }
+  }
+  .active {
+    background: #111A45 !important;
+    color: #FFFFFF !important;
+  }
+  
+  
+  

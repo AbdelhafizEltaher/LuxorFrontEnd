@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
+@font-face {
+    font-family: 'Tajawal';
+    src: url('../src/assets/fonts/Tajawal-Medium.ttf') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Lato';
+    src: url('../src/assets/fonts/Lato-Regular.ttf') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+  }
+

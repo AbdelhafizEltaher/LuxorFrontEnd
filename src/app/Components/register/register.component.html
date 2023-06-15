@@ -1,0 +1,44 @@
+<div class="page">
+
+    <div class="d-none d-lg-block">
+        <img src="assets/images/logo.png" alt="">
+    </div>
+
+
+
+    <div class="box">
+        <div class="form">
+            <h2>إنشاء حساب جديد</h2>
+            <div class="inputBox">
+                <input type="text" [(ngModel)]="ResiterUser.userName" required="required">
+                <span>اسم المستخدم</span>
+                <i></i>
+            </div>
+            <div class="inputBox">
+                <input type="text" [(ngModel)]="ResiterUser.email"  required="required">
+                <span>الايميل الخاص بك</span>
+                <i></i>
+            </div>
+            <div class="inputBox">
+                <input type="number" [(ngModel)]="ResiterUser.code"  required="required">
+                <span>كود المستخدم</span>
+                <i></i>
+            </div>
+
+            <div class="inputBox">
+                <input type="text" [(ngModel)]="ResiterUser.phoneNumber"  required="required">
+                <span>رقم الهاتف</span>
+                <i></i>
+            </div>
+
+            <div class="inputBox">
+                <input type="password" [(ngModel)]="ResiterUser.password"  required="required">
+                <span>كلمة السر</span>
+                <i></i>
+            </div>
+            <a (click)="register()"><input type="submit" value="إنشاء الحساب"></a>
+        </div>
+    </div>
+
+
+</div>

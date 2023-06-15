@@ -1,0 +1,71 @@
+<ng-container>
+  <div class="d-flex flex-column flex-shrink-0  " id="side_nav">
+    <ul class="nav nav-pills flex-column mb-auto me-3 text-end">
+      <li class="nav-item mt-2">
+        <a class="nav-link" routerLinkActive="active" routerLink="/main/add">
+          إضافة نزيل
+
+
+          <i class="bi bi-patch-plus ms-2"></i>
+
+        </a>
+      </li>
+
+
+      <li class="nav-item mt-2">
+        <a class="nav-link" routerLinkActive="active" routerLink="/main/view">
+          بيانات النزلاء
+          <i class="bi bi-ticket-detailed ms-2"></i>
+
+        </a>
+      </li>
+
+
+      <li class="nav-item mt-2">
+        <a class="nav-link" routerLinkActive="active" routerLink="/main/galsa">
+          الجلسات
+
+
+          <i class="bi bi-bank2 ms-2"></i>
+
+        </a>
+      </li>
+
+
+      <li class="nav-item mt-2">
+        <a class="nav-link" routerLinkActive="active" routerLink="/main/outSource">
+          الجهات الخارجية
+
+
+          <i class="bi bi-sign-turn-slight-left ms-2"></i>
+
+        </a>
+      </li>
+
+      <li class="nav-item mt-2">
+        <a class="nav-link" routerLinkActive="active" routerLink="/main/ended">
+          المنتهي
+
+
+          <i class="bi bi-calendar-x ms-2"></i>
+
+        </a>
+      </li>
+
+
+      <li class="nav-item mt-2" *ngIf="role == 'Admin'">
+        <a class="nav-link" routerLinkActive="active" routerLink="/register">
+          إضافة مستخدم 
+          <i class="bi bi-people ms-2"></i>
+
+        </a>
+      </li>
+      <li class="nav-item-2">
+        <a class="nav-link" (click)="LogOut()">
+          تسجيل خروج
+          <i class="bi bi-box-arrow-right ms-2"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+</ng-container>
