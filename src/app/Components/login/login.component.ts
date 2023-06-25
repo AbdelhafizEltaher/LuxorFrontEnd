@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginData } from 'src/app/Models/Prisoner';
 import { ApiService } from 'src/app/Services/api.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -26,8 +27,11 @@ export class LoginComponent {
           localStorage.setItem('token',res.token)
           this.router.navigate(['/main/view'])          
         },
-        error: (err) => {
-          console.log(err);
+        error: (err) => {          
+          Swal.fire({
+            icon: 'error',
+            text: err.error,
+          })
         }
       })
     }

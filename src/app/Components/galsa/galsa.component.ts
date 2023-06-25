@@ -63,25 +63,25 @@ export class GalsaComponent {
   }
   updateDate(date: string) {
     // this.selectedPrizenoer.galsaDate = this.datePipe.transform(date, 'yyyy-MM-ddTHH:mm:ss')??''
-    this.api.UpdatePrizoner(this.selectedPrizenoer).subscribe({
-      next: (data) => {
-        console.log(data);
-        this.display2 = false
-        this.display = false
-        this.ngOnInit()
-        Swal.fire({
-          icon: 'success',
-          text: 'تمت نقل النزيل بنجاح الي قائمة الجهات الخارجية',
-        })
+    // this.api.UpdatePrizoner(this.selectedPrizenoer).subscribe({
+    //   next: (data) => {
+    //     console.log(data);
+    //     this.display2 = false
+    //     this.display = false
+    //     this.ngOnInit()
+    //     Swal.fire({
+    //       icon: 'success',
+    //       text: 'تمت نقل النزيل بنجاح الي قائمة الجهات الخارجية',
+    //     })
 
-      },
-      error: (err) => {
-        console.log(err);
-        Swal.fire({
-          icon: 'error',
-          text: 'لقد حدث خطا ما برجاء المحاولة مرة اخرى',
-        })
-      }
-    })
+    //   },
+    //   error: (err) => {
+    //     console.log(err);
+    //     Swal.fire({
+    //       icon: 'error',
+    //       text: 'لقد حدث خطا ما برجاء المحاولة مرة اخرى',
+    //     })
+    //   }
+    // })
   }
 }

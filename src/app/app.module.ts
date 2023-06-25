@@ -19,6 +19,7 @@ import { PrimengModule } from './Services/Ui';
 import { GalsaComponent } from './Components/galsa/galsa.component';
 import { EndedListComponent } from './Components/ended-list/ended-list.component';
 import { OutSourceComponent } from './Components/out-source/out-source.component';
+import { PrintComponent } from './Components/print/print.component';
 
 @NgModule({
   declarations: [
@@ -33,8 +34,9 @@ import { OutSourceComponent } from './Components/out-source/out-source.component
     ViewPrisComponent,
     GalsaComponent,
     EndedListComponent,
-    OutSourceComponent
-  ],
+    OutSourceComponent,
+    PrintComponent
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,

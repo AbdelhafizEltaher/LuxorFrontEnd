@@ -9,13 +9,6 @@
                     <div class="col-md-3 col-12 pe-1">
                         <div class="mb-3">
                             <input type="text" pInputText class="w-100 text-end BasicInput" dir="rtl"
-                                placeholder="رقم مسلسل النزيل" formControlName="serial"
-                                [class.is-invalid]="serial?.errors?.['pattern']" [class.is-valid]="serial?.valid">
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-12 pe-1">
-                        <div class="mb-3">
-                            <input type="text" pInputText class="w-100 text-end BasicInput" dir="rtl"
                                 placeholder="اسم النزيل" formControlName="name"
                                 [class.is-invalid]="name?.errors?.['pattern']" [class.is-valid]="name?.valid">
                         </div>
@@ -46,7 +39,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-9 col-12 pe-1">
+                    <div class="col-md-6 col-12 pe-1">
                         <div class="mb-3">
                             <input type="text" pInputText class="w-100 text-end BasicInput" dir="rtl"
                                 placeholder="العنوان" formControlName="adress"
@@ -79,7 +72,7 @@
                     <div class="col-md-3 col-12 pe-1">
                         <div class="mb-3">
                             <input type="text" pInputText class="w-100 text-end BasicInput" dir="rtl"
-                                placeholder="وجه الاتهام " formControlName="accusation"
+                                placeholder="التهمة " formControlName="accusation"
                                 [class.is-invalid]="accusation?.errors?.['pattern']"
                                 [class.is-valid]="accusation?.valid">
                         </div>
@@ -113,14 +106,14 @@
                         </div>
                     </div>
 
-                    <div class="col-md-3 col-12 pe-1">
+                    <!-- <div class="col-md-3 col-12 pe-1">
                         <div class="mb-3">
                             <input type="text" pInputText class="w-100 text-end BasicInput" dir="rtl"
                                 placeholder=" رقم الجلسة " formControlName="galsaNumber"
                                 [class.is-invalid]="galsaNumber?.errors?.['pattern']"
                                 [class.is-valid]="galsaNumber?.valid">
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="col-md-3 col-12 pe-1">
                         <div class="mb-3">
@@ -149,16 +142,6 @@
                                 placeholder=" تاريخ الخروج "></p-calendar>
                         </div>
                     </div>
-
-                    <div class="col-md-12 col-12 pe-1">
-                        <div class="mb-3">
-                            <textarea type="text" pInputText class="w-100 text-end BasicInput" dir="rtl"
-                                placeholder=" ملاحظات " formControlName="Notes"
-                                [class.is-invalid]="Notes?.errors?.['pattern']"
-                                [class.is-valid]="Notes?.valid"></textarea>
-                        </div>
-                    </div>
-
                     <div class="col-md-3 col-12 pe-1">
                         <div class="mb-3 fileCnotainer">
                             <p class="me-2 pt-3">{{imageText}}</p>
@@ -171,15 +154,19 @@
                             </svg>
                         </div>
                     </div>
+                    <div class="col-md-12 col-12 pe-1">
+                        <div class="mb-3">
+                            <textarea type="text" pInputText class="w-100 text-end BasicInput" dir="rtl"
+                                placeholder=" ملاحظات " formControlName="Notes"
+                                [class.is-invalid]="Notes?.errors?.['pattern']"
+                                [class.is-valid]="Notes?.valid"></textarea>
+                        </div>
+                    </div>
+
+
 
                 </div>
-
-
-
-
             </form>
-
-
             <div class="d-flex flex-row justify-content-end flex-wrap btnContainer py-3">
                 <button class="btn cancelBtn">الغاء</button>
                 <button class="btn addBtn " [disabled]="AddForm.invalid" (click)="Add()">حفظ</button>

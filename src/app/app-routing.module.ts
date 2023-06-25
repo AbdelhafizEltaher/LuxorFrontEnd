@@ -10,6 +10,7 @@ import { AdminGuard } from './Guard/admin.guard';
 import { GalsaComponent } from './Components/galsa/galsa.component';
 import { EndedListComponent } from './Components/ended-list/ended-list.component';
 import { OutSourceComponent } from './Components/out-source/out-source.component';
+import { PrintComponent } from './Components/print/print.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,8 @@ const routes: Routes = [
     path: 'login', component: LoginComponent, redirectTo: ''
   }
   ,
+  { path: 'printPresionData/:data', component: PrintComponent },
+
   {
     path: 'register', component: RegisterComponent , canActivate:[AdminGuard]
   },
@@ -39,6 +42,7 @@ const routes: Routes = [
       {
         path: 'outSource', component: OutSourceComponent
       },
+
     ]
   },
 ]

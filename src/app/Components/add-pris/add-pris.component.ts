@@ -18,20 +18,20 @@ export class AddPrisComponent {
   constructor(private datePipe: DatePipe,private fb: FormBuilder, private api: ApiService) { }
   AddForm = this.fb.group({
     id: ([0]),
-    serial: ([null, [Validators.required, Validators.pattern('[0-9]+')]]),
+    serial: (['1']),
     name: (['', [Validators.required, Validators.pattern('[A-Za-z\u0621-\u064A ]+')]]),
     age: ([null, [Validators.required, Validators.pattern('[0-9]+')]]),
     birthDate: (['', [Validators.required]]),
-    nationalNumber: (['', [Validators.required]]),
+    nationalNumber: (['', [Validators.required , Validators.minLength(14) ,  Validators.maxLength(14) ]]),
     adress: (['', [Validators.required, Validators.pattern('[0-9A-Za-z\u0621-\u064A- ]+')]]),
     nickName: (['', [Validators.required, Validators.pattern('[A-Za-z\u0621-\u064A ]+')]]),
     JobTitle: (['', [Validators.required, Validators.pattern('[A-Za-z\u0621-\u064A ]+')]]),
     accusation: (['', [Validators.required, Validators.pattern('[0-9A-Za-z\u0621-\u064A ]+')]]),
     judgmentTitle: (['', [Validators.required, Validators.pattern('[0-9A-Za-z\u0621-\u064A ]+')]]),
-    fileNumber: (['', [Validators.required, Validators.pattern('[0-9]+')]]),
-    KadyaNumber: (['', [Validators.required, Validators.pattern('[0-9]+')]]),
+    fileNumber: (['', [Validators.required, Validators.pattern('[0-9A-Za-z\u0621-\u064A ]+')]]),
+    KadyaNumber: (['', [Validators.required, Validators.pattern('[0-9A-Za-z\u0621-\u064A ]+')]]),
     galsaDate: (['', [Validators.required]]),
-    galsaNumber: (['', [Validators.required, Validators.pattern('[0-9]+')]]),
+    galsaNumber: (['1']),
     startDate: (['', [Validators.required]]),
     EndDate: (['', [Validators.required]]),
     ImageUrl: (['', [Validators.required]]),
@@ -131,7 +131,7 @@ export class AddPrisComponent {
         this.AddForm.reset()
       },
       error: (err) => {
-        console.log(err);
+        console.log(err.error.errors);
         Swal.fire({
           icon: 'error',
           text: 'لقد حدث خطا ما برجاء المحاولة مرة اخرى',

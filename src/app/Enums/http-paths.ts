@@ -10,11 +10,13 @@ export enum HttpPaths {
 
     API_ADD_PRIZENORES='https://localhost:7168/api/Prizenores/Add',
     API_GET_PRIZENORES='https://localhost:7168/api/Prizenores/getList',
+    API_Update_PRIZENORES='https://localhost:7168/api/Prizenores/update',
+    API_GET_PRIZENORES_BY_ID='https://localhost:7168/api/Prizenores/getById?id=',
     API_GET_DELETED_PRIZENORES='https://localhost:7168/api/Prizenores/getEndedListAsync',
     API_GET_OUTSOURCE_PRIZENORES='https://localhost:7168/api/Prizenores/getOutSourceList',
     API_DELETE_PRIZENORES='https://localhost:7168/api/Prizenores/Delete?id=',
     API_UPDATE_PLACE_PRIZENORES='https://localhost:7168/api/Prizenores/updatePlace?',
 
-
+    // https://localhost:7168
 
 }

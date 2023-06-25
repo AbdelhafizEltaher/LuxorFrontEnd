@@ -83,3 +83,325 @@
     color: #888DA2 !important;
   }
   
+
+
+
+
+
+
+
+
+
+
+
+  ///////////////////////////////////////////////////////
+  /// 
+  /// 
+  /// 
+  /// 
+  /// 
+  .body {
+    background: #F5F7FB;
+    margin-right: 15px;
+  }
+  
+  .heading {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    font-family: 'Tajawal';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 17px;
+    text-align: right;
+    color: #888DA2;
+  
+    p {
+      margin: 0px;
+      padding: 0px;
+    }
+  }
+  
+  
+  
+  .oneBook {
+    background-color: #fff;
+    font-family: 'Tajawal';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    margin-left: 20px;
+    min-height: 100vh;
+  }
+  
+  
+  .tabView {
+    background: #FFFFFF;
+    border: 1px solid #DEE2E6;
+    border-radius: 6px;
+    width: 315px;
+    height: 56px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-left: auto;
+  }
+  
+  .NonactiveTab {
+    width: 150px;
+    height: 46px;
+    background: #FFFFFF;
+    border-radius: 6px;
+    border: none;
+    font-family: 'Tajawal';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    padding-block: 12px;
+    color: #888DA2 !important;
+  
+    &:hover {
+      width: 150px;
+      height: 46px;
+      background: #FFFFFF;
+      border-radius: 6px;
+      border: none;
+      font-family: 'Tajawal';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 22px;
+      text-align: center;
+      padding-block: 12px;
+      background: #2563EB;
+      border-radius: 6px;
+      color: #fff !important;
+    }
+  }
+  
+  .activeTab {
+    width: 150px;
+    height: 46px;
+    background: #FFFFFF;
+    border-radius: 6px;
+    border: none;
+    font-family: 'Tajawal';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    padding-block: 12px;
+    background: #2563EB;
+    border-radius: 6px;
+    color: #fff;
+  }
+  
+  .firstData {
+    font-family: 'Tajawal';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: right;
+    color: #111A45;
+    margin-top: 25px;
+    margin-bottom: 12px;
+  }
+  
+  .addBtn {
+    background: #2563EB;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+    width: 100px;
+    border: none;
+    margin-right: 20px;
+    margin-top: 20px;
+  
+    color: #fff;
+  }
+  
+  .cancelBtn {
+    background: #EAF0FD;
+    border-radius: 6px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    width: 100px;
+    color: #2563EB;
+    margin-right: 10px;
+    margin-top: 20px;
+  
+  }
+  
+  ::ng-deep .backgroundCo .p-inputtext {
+    border-radius: 0px 6px 6px 0px !important;
+    font-family: 'Tajawal' !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-size: 18px !important;
+    line-height: 22px !important;
+    color: #888DA2 !important;
+    border: 1px solid #ced4da;
+    border-left: none;
+  
+    &:hover {
+      background-color: #fff;
+      color: #888DA2;
+      border: 1px solid #ced4da;
+      border-left: none;
+    }
+  }
+  
+  ::ng-deep .backgroundCo .p-button {
+    border-radius: 6px 0px 0px 6px !important;
+    background-color: #fff;
+    color: #888DA2;
+    border: 1px solid #ced4da;
+    border-right: none;
+  
+    &:hover {
+      border-radius: 6px 0px 0px 6px !important;
+      background-color: #fff;
+      color: #888DA2;
+      border: 1px solid #ced4da;
+      border-right: none;
+    }
+  }
+  
+  ::ng-deep .BasicInput.p-inputtext {
+    background: #F5F7FB !important;
+    font-family: 'Tajawal' !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-size: 18px !important;
+    line-height: 22px !important;
+    color: #888DA2 !important;
+  }
+  
+  ::ng-deep .p-dropdown-filter.p-inputtext {
+    margin-right: 2px !important;
+  }
+  
+  ::ng-deep .p-dropdown .p-dropdown-label {
+    font-family: 'Tajawal' !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-size: 18px !important;
+    line-height: 22px !important;
+    color: #888DA2 !important;
+  }
+  
+  .fileCnotainer {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 46px;
+    border: 1px solid #DEE2E6;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row-reverse;
+  
+    p {
+      font-family: 'Tajawal';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 22px;
+      color: #888DA2;
+    }
+  
+    >input {
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: 0;
+      padding: 0;
+      font-size: 20px;
+      cursor: pointer;
+      opacity: 0;
+      filter: alpha(opacity=0);
+    }
+  }
+  
+  
+  ::ng-deep .backgroundCo .p-inputtext {
+    border-radius: 0px 6px 6px 0px !important;
+    font-family: 'Tajawal' !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-size: 18px !important;
+    line-height: 22px !important;
+    color: #888DA2 !important;
+    border: 1px solid #ced4da;
+    background-color: #F5F7FB;
+    border-left: none;
+    
+  
+    &:hover {
+      background-color: #fff;
+      color: #888DA2;
+      border: 1px solid #ced4da;
+      border-left: none;
+      background-color: #F5F7FB;
+  
+    }
+  }
+  
+  .fileCnotainer {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 46px;
+    border: 1px solid #DEE2E6;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row-reverse;
+    background-color: #F5F7FB;
+  
+    p {
+      font-family: 'Tajawal';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 22px;
+      color: #888DA2;
+    }
+  
+    >input {
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: 0;
+      padding: 0;
+      font-size: 20px;
+      cursor: pointer;
+      opacity: 0;
+      filter: alpha(opacity=0);
+    }
+  }
+  
+  ::ng-deep .backgroundCo .p-button {
+    border-radius: 6px 0px 0px 6px !important;
+    background-color: #F5F7FB;
+    color: #888DA2;
+    border: 1px solid #ced4da;
+    border-right: none;
+  
+    &:hover {
+      border-radius: 6px 0px 0px 6px !important;
+      background-color: #F5F7FB;
+      color: #888DA2;
+      border: 1px solid #ced4da;
+      border-right: none;
+    }
+  }
+  label{
+    margin: 10px 0px;
+  }
