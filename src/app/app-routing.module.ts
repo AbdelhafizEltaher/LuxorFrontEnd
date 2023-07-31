@@ -11,6 +11,7 @@ import { GalsaComponent } from './Components/galsa/galsa.component';
 import { EndedListComponent } from './Components/ended-list/ended-list.component';
 import { OutSourceComponent } from './Components/out-source/out-source.component';
 import { PrintComponent } from './Components/print/print.component';
+import { EditComponent } from './Components/edit/edit.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
       },
       {
         path: 'outSource', component: OutSourceComponent
+      },
+
+      {
+        path: 'edit/:id', component: EditComponent
       },
 
     ]

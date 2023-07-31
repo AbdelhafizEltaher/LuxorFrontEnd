@@ -20,6 +20,7 @@ import { GalsaComponent } from './Components/galsa/galsa.component';
 import { EndedListComponent } from './Components/ended-list/ended-list.component';
 import { OutSourceComponent } from './Components/out-source/out-source.component';
 import { PrintComponent } from './Components/print/print.component';
+import { EditComponent } from './Components/edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { PrintComponent } from './Components/print/print.component';
     GalsaComponent,
     EndedListComponent,
     OutSourceComponent,
-    PrintComponent
+    PrintComponent,
+    EditComponent
     ],
   imports: [
     BrowserModule,

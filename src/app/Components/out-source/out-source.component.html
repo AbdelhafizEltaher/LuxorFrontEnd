@@ -6,6 +6,7 @@
             [rowsPerPageOptions]="[10, 25, 50]">
             <ng-template pTemplate="header">
                 <tr>
+                    <th></th>
                     <th style="text-align: center;">تاريخ الخروج</th>
                     <th style="text-align: center;">تاريخ الدخول</th>
                     <th style="text-align: center;">رقم الملف</th>
@@ -18,6 +19,9 @@
             </ng-template>
             <ng-template pTemplate="body" let-item>
                 <tr [class.bg-danger]="item.endDate < currentDate" [class.text-white]="item.endDate < currentDate">
+                    <td class="text-center"><a class="btn" [class.btn-outline-primary]="item.endDate > currentDate"
+                        [class.btn-outline-light]="item.endDate < currentDate"
+                        (click)="selectedPrizenoer = item;display = true"><i class="bi bi-sliders"></i></a></td>
                     <td style="text-align: center;">{{ formatedFun (item.endDate) }}</td>
                     <td style="text-align: center;">{{ formatedFun(item.startDate) }}</td>
                     <td style="text-align: center;">{{ item.fileNumber }}</td>
@@ -38,3 +42,32 @@
     </div>
 
 </section>
+
+
+
+
+<p-dialog dir="rtl" [(visible)]="display" [modal]="true" [blockScroll]="true" [draggable]="false"
+    [breakpoints]="{'960px': '75vw', '640px': '100vw'}" [style]="{width: '50vw'}">
+    <ng-template pTemplate="header">
+        <div class="text-end POpTextHeader  w-100">
+            إجراءات النزلاء </div>
+    </ng-template>
+
+    <div class="dialog">
+
+        من فضلك حدد الاجراء الذى سيتم اتخاذه مع هذا السجين
+
+    </div>
+
+    <ng-template pTemplate="footer">
+        <div class="d-flex justify-content-start">
+            <input type="submit" class="btn PopAcep4 mx-2 w-25  " (click)="Print()" value="عرض البيانات">
+            <input type="button" class="btn PopAcep3 mx-2 w-25  " (click)="edit()" value="تعديل">
+            <input type="button" class="btn PopAcep1 mx-2 w-25  " (click)="SetRule(1)" value="حذف">
+            <!-- <input type="submit" class="btn PopAcep2 mx-2 w-25  " (click)="SetRule(2)" value="نقل لجهة خارجية"> -->
+        </div>
+    </ng-template>
+</p-dialog>
+
+
+
