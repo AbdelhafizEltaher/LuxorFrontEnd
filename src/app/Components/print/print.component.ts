@@ -19,6 +19,14 @@ export class PrintComponent {
   user:string = localStorage.getItem('username')??""
   selectedPresioner : Prizenor={ } as Prizenor
   imageUrl:any
+
+  @HostListener('document:keydown', ['$event'])
+  onKeyDown(event: KeyboardEvent) {
+    if (event.ctrlKey && event.key === 's') {
+      event.preventDefault();
+      console.log('Ctrl+S is disabled');
+    }
+  }
   constructor( private activeRouter : ActivatedRoute , private api : ApiService , private sentiser : DomSanitizer) { }
   ngOnInit(): void {
     let id = this.activeRouter.snapshot.paramMap.get('data') ?? '0'
@@ -27,11 +35,11 @@ export class PrintComponent {
      this.api.GetPrizonersById(+id).subscribe({
       next:(data:any)=>{
         this.selectedPresioner = data
-        console.log( this.selectedPresioner);
-        console.log(data.imgUrl);
-        this.imageUrl = this.sentiser.bypassSecurityTrustUrl(data.imgUrl)
-        this.imageUrl = 'https://localhost:7168/'+data.imgUrl
-        
+        console.log( this.selectedPresioner.imgUrl);
+         this.imageUrl = this.sentiser.bypassSecurityTrustUrl(data.imgUrl)
+        //this.imageUrl = 'http://fahdeltaher-001-site1.atempurl.com/'+data.imgUrl;
+        this.imageUrl = 'https://localhost:7168'+data.imgUrl.split('wwwroot')[1];
+        console.log(this.imageUrl);
       },
       error:(err)=>{
         Swal.fire({

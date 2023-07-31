@@ -1,27 +1,21 @@
 <section class="p-4">
     <div>
-        <p-table
-        
-        #dt1
-        [value]="listOfPrizoners"
-        dataKey="id"
-        [rows]="10"
-        [showCurrentPageReport]="true"
-        [rowsPerPageOptions]="[10, 25, 50]"
-        [paginator]="true"
-        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-        [globalFilterFields]="['name', 'nationalNumber', 'accusation', 'judgmentTitle'  , 'kadyaNumber']"
-    >
-    <ng-template pTemplate="caption">
-        <div class="flex" dir="rtl">
-            <span class="p-input-icon-left ml-auto w-75">
-                <i class="pi pi-search"></i>
-                <input pInputText type="text" class="w-100" #searchArea (input)="dt1.filterGlobal(searchArea.value, 'contains')" placeholder="ابحث عن" />
-            </span>
-            <button pButton label="الغاء" class="p-button-outlined mx-5 " icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
+        <p-table #dt1 [value]="listOfPrizoners" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
+            [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+            [globalFilterFields]="['name', 'nationalNumber', 'accusation', 'judgmentTitle'  , 'kadyaNumber']">
+            <ng-template pTemplate="caption">
+                <div class="flex" dir="rtl">
+                    <span class="p-input-icon-left ml-auto w-75">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" class="w-100" #searchArea
+                            (input)="dt1.filterGlobal(searchArea.value, 'contains')" placeholder="ابحث عن" />
+                    </span>
+                    <button pButton label="الغاء" class="p-button-outlined mx-5 " icon="pi pi-filter-slash"
+                        (click)="clear(dt1)"></button>
 
-        </div>
-    </ng-template>
+                </div>
+            </ng-template>
             <ng-template pTemplate="header">
                 <tr>
                     <th></th>
@@ -36,8 +30,8 @@
             <ng-template pTemplate="body" let-item>
                 <tr [class.bg-danger]="item.endDate < currentDate" [class.text-white]="item.endDate < currentDate">
                     <td class="text-center"><a class="btn" [class.btn-outline-primary]="item.endDate > currentDate"
-                        [class.btn-outline-light]="item.endDate < currentDate"
-                        (click)="selectedPrizenoer = item;display = true"><i class="bi bi-sliders"></i></a></td>
+                            [class.btn-outline-light]="item.endDate < currentDate"
+                            (click)="selectedPrizenoer = item;display = true"><i class="bi bi-sliders"></i></a></td>
                     <td style="text-align: center;">{{ formatedFun (item.endDate) }}</td>
                     <td style="text-align: center;">{{ item.kadyaNumber }}</td>
                     <td style="text-align: center;">{{ item.judgmentTitle }}</td>
@@ -58,7 +52,8 @@
 </section>
 
 
-<p-dialog dir="rtl" [(visible)]="display" [breakpoints]="{'960px': '75vw', '640px': '100vw'}" [style]="{width: '50vw'}">
+<p-dialog dir="rtl" [(visible)]="display" [modal]="true" [blockScroll]="true" [draggable]="false"
+    [breakpoints]="{'960px': '75vw', '640px': '100vw'}" [style]="{width: '50vw'}">
     <ng-template pTemplate="header">
         <div class="text-end POpTextHeader  w-100">
             إجراءات النزلاء </div>
@@ -73,7 +68,7 @@
     <ng-template pTemplate="footer">
         <div class="d-flex justify-content-start">
             <input type="submit" class="btn PopAcep4 mx-2 w-25  " (click)="Print()" value="عرض البيانات">
-            <input type="button" class="btn PopAcep3 mx-2 w-25  " (click)="display3=true" value="تعديل">
+            <input type="button" class="btn PopAcep3 mx-2 w-25  " (click)="edit()" value="تعديل">
             <input type="button" class="btn PopAcep1 mx-2 w-25  " (click)="SetRule(1)" value="حذف">
             <input type="submit" class="btn PopAcep2 mx-2 w-25  " (click)="SetRule(2)" value="نقل لجهة خارجية">
         </div>
@@ -82,8 +77,8 @@
 
 
 
-<p-dialog dir="rtl" [(visible)]="display2" [breakpoints]="{'960px': '75vw', '640px': '100vw'}"
-    [style]="{width: '50vw'}">
+<p-dialog dir="rtl" [(visible)]="display2" [modal]="true" [blockScroll]="true" [draggable]="false"
+    [breakpoints]="{'960px': '75vw', '640px': '100vw'}" [style]="{width: '50vw'}">
     <ng-template pTemplate="header">
         <div class="text-end POpTextHeader  w-100">
             نقل نزيل لجهة خارجية</div>
@@ -101,167 +96,11 @@
     </div>
 
     <ng-template pTemplate="footer">
-        <div class="d-flex justify-content-around">
-            <input type="button" class="btn PopAcep1 mx-2 w-25 " (click)="updatePlace(Place.value)" value="حفظ">
-            <input type="button" class="btn PopAcep3 mx-2 w-25 " (click)="display2 = false ; display = true"
+        <div class="d-flex justify-content-start">
+            <input type="button" class="btn PopAcep3 mx-2 w-25 " (click)="updatePlace(Place.value)" value="حفظ">
+            <input type="button" class="btn PopAcep2 mx-2 w-25 " (click)="display2 = false ; display = true"
                 value="إلغاء">
         </div>
     </ng-template>
 
 </p-dialog>
-
-
-
-
- <p-dialog dir="rtl" [(visible)]="display3" [breakpoints]="{'960px': '75vw', '640px': '100vw'}"
-    [style]="{width: '80vw'}">
-    <ng-template pTemplate="header">
-        <div class="text-end POpTextHeader  w-100"> تعديل بيانات السجين {{selectedPrizenoer.name}}</div>
-    </ng-template>
-
-    <div class="dialog ">
-        <div class="d-flex flex-row-reverse justify-content-start align-items-cenetr flex-wrap px-3 ">
-            <div class="col-md-3 col-12 pe-1">
-                <div class="mb-3">
-                    <label for="" class="my-2">اسم النزيل</label>
-                    <input type="text" pInputText class="w-100 text-end BasicInput" dir="rtl"
-                        placeholder="اسم النزيل" [(ngModel)]="selectedPrizenoer.name"
-                        >
-                </div>
-            </div>
-            <div class="col-md-3 col-12 pe-1">
-                <div class="mb-3">
-                    <label for="" class="my-2">السن</label>
-
-                    <input type="text" pInputText class="w-100 text-end BasicInput" dir="rtl" placeholder="السن"
-                        [(ngModel)]="selectedPrizenoer.age">
-                </div>
-            </div>
-
-            <div class="col-md-3 col-12 pe-1">
-                <div class="mb-3">
-                    <label for="" class="my-2">تاريخ الميلاد</label>
-
-                    <p-calendar [(ngModel)]="selectedPrizenoer.birthDate"  [showButtonBar]="true"
-                        styleClass="w-100 text-end backgroundCo" dir="rtl" [showIcon]="true"
-                        placeholder="تاريخ لميلاد "></p-calendar>
-                </div>
-            </div>
-
-            <div class="col-md-3 col-12 pe-1">
-                <div class="mb-3">
-                    <label for="" class="my-2">الرقم القومى</label>
-
-                    <input type="text" pInputText class="w-100 text-end BasicInput" dir="rtl"
-                        placeholder="الرقم القومي " [(ngModel)]="selectedPrizenoer.nationalNumber">
-                </div>
-            </div>
-
-            <div class="col-md-6 col-12 pe-1">
-                <div class="mb-3">
-                    <label for="" class="my-2">العنوان</label>
-
-                    <input type="text" pInputText class="w-100 text-end BasicInput" dir="rtl"
-                        placeholder="العنوان" [(ngModel)]="selectedPrizenoer.adress">
-                </div>
-            </div>
-            <div class="col-md-3 col-12 pe-1">
-                <div class="mb-3">
-                    <label for="" class="my-2">اسم الشهرة</label>
-
-                    <input type="text" pInputText class="w-100 text-end BasicInput" dir="rtl"
-                        placeholder="اسم الشهرة" [(ngModel)]="selectedPrizenoer.nickName">
-                </div>
-            </div>
-
-            <div class="col-md-3 col-12 pe-1">
-                <div class="mb-3">
-                    <label for="" class="my-2">المهنة</label>
-
-                    <input type="text" pInputText class="w-100 text-end BasicInput" dir="rtl"
-                        placeholder=" المهنة" [(ngModel)]="selectedPrizenoer.jobTitle
-                        ">
-                </div>
-            </div>
-
-        </div>
-
-        <div class="d-flex flex-row-reverse justify-content-between align-items-cenetr flex-wrap px-3 ">
-            <div class="col-md-3 col-12 pe-1">
-                <div class="mb-3">
-                    <label for="" class="my-2">المهنة</label>
-
-                    <input type="text" pInputText class="w-100 text-end BasicInput" dir="rtl"
-                        placeholder="التهمة " [(ngModel)]="selectedPrizenoer.accusation">
-                </div>
-            </div>
-
-            <div class="col-md-3 col-12 pe-1">
-                <div class="mb-3">
-                    <label for="" class="my-2">الحكم</label>
-
-                    <input type="text" pInputText class="w-100 text-end BasicInput" dir="rtl"
-                        placeholder=" الحكم " [(ngModel)]="selectedPrizenoer.judgmentTitle">
-                </div>
-            </div>
-
-            <div class="col-md-3 col-12 pe-1">
-                <div class="mb-3">
-                    <label for="" class="my-2">رقم الملف</label>
-
-                    <input type="text" pInputText class="w-100 text-end BasicInput" dir="rtl"
-                        placeholder="رقم الملف" [(ngModel)]="selectedPrizenoer.fileNumber">
-                </div>
-            </div>
-
-
-            <div class="col-md-3 col-12 pe-1">
-                <div class="mb-3">
-                    <label for="" class="my-2">رقم القضية</label>
-
-                    <input type="text" pInputText class="w-100 text-end BasicInput" dir="rtl"
-                        placeholder="رقم القضية " [(ngModel)]="selectedPrizenoer.kadyaNumber">
-                </div>
-            </div>
-
-            <div class="col-md-4 col-12 pe-1">
-                <div class="mb-3">
-                    <p-calendar placeholder="تاريخ الجلسة " [(ngModel)]="selectedPrizenoer.galsaDate"
-                        [showButtonBar]="true" styleClass="w-100 text-end backgroundCo" dir="rtl"
-                        [showIcon]="true"></p-calendar>
-
-                </div>
-            </div>
-
-
-            <div class="col-md-4 col-12 pe-1">
-                <div class="mb-3">
-                    <p-calendar [(ngModel)]="selectedPrizenoer.startDate"  [showButtonBar]="true"
-                        styleClass="w-100 text-end backgroundCo" dir="rtl" [showIcon]="true"
-                        placeholder=" تاريخ الدخول "></p-calendar>
-                </div>
-            </div>
-            <div class="col-md-4 col-12 pe-1">
-                <div class="mb-3">
-                    <p-calendar [(ngModel)]="selectedPrizenoer.endDate"  [showButtonBar]="true"
-                        styleClass="w-100 text-end backgroundCo" dir="rtl" [showIcon]="true"
-                        placeholder=" تاريخ الخروج "></p-calendar>
-                </div>
-            </div>
-           
-
-
-
-        </div>
-    </div>
-
-    <ng-template pTemplate="footer">
-        <div class="d-flex justify-content-start">
-            <input type="button" class="btn PopAcep3 mx-2  " (click)="edit()"
-            value="حفظ التعديلات">
-            <input type="button" class="btn PopAcep2 mx-2  " (click)="display3 = false ; display = true"
-                value="إلغاء">
-        </div>
-    </ng-template>
-
-</p-dialog> 

@@ -35,7 +35,7 @@ export class AddPrisComponent {
     startDate: (['', [Validators.required]]),
     EndDate: (['', [Validators.required]]),
     ImageUrl: (['', [Validators.required]]),
-    Notes: (['', [Validators.required, Validators.pattern('[0-9A-Za-z\u0621-\u064A ]+')]])
+    Notes: (['', [Validators.pattern('[0-9A-Za-z\u0621-\u064A ]+')]])
   })
 
 
@@ -129,6 +129,7 @@ export class AddPrisComponent {
           text: 'تمت اضافة النزيل بنجاح الي قائمة النزلاء',
         })
         this.AddForm.reset()
+        this.imageText='اختر صورة النزيل'
       },
       error: (err) => {
         console.log(err.error.errors);

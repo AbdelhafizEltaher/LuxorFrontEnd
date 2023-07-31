@@ -19,6 +19,7 @@ export interface Prizenor {
     Notes: string,
     outSource? : string
     imgUrl?:string
+    notes?:string
 }
 
 export interface User {
