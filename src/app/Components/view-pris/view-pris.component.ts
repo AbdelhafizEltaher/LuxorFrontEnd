@@ -21,8 +21,12 @@ export class ViewPrisComponent implements OnInit {
   currentDate: string;
   ImageUrl: any
   imageText: string = 'اختر صورة النزيل'
+  today = new Date()
+  dayBeroreToday: string
   constructor(private datePipe: DatePipe, private api: ApiService, private router: Router) {
+    this.dayBeroreToday = this.datePipe.transform(new Date(this.today.getTime() - (2 * 86400000)), 'yyyy-MM-ddTHH:mm:ss.SSSZ', 'Africa/Cairo') ?? ''
     this.currentDate = this.datePipe.transform(new Date(), 'yyyy-MM-ddTHH:mm:ss.SSSZ', 'Africa/Cairo') ?? ''
+
   }
 
   ngOnInit(): void {
@@ -120,7 +124,7 @@ export class ViewPrisComponent implements OnInit {
     window.open(`/printPresionData/${this.selectedPrizenoer.id}`)
   }
 
-  edit(){
-   this.router.navigate(['/main/edit/'+this.selectedPrizenoer.id])
+  edit() {
+    this.router.navigate(['/main/edit/' + this.selectedPrizenoer.id])
   }
 }

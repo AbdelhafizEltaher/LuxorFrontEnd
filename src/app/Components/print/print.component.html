@@ -1,151 +1,148 @@
-<section id="body" class="pt-3" >
+<section id="body" class="pt-3">
 
 
-    <div  id="div">
+    <div id="div">
         <div class="container-fluid" style="width :  95%;">
             <div class="row px-5">
-          <div class=" col-6 textstart">
-  
-            <h3 class=" m-0 p-0 mt-3">وزارة الداخلية المصرية</h3>
-            <h3 class=" m-0 p-0 my-2">{{ date | date  :  'medium' }}</h3>
-          </div>
-  
-          <div class=" col-6 text-end">
-            <img src="assets\images\logo.png" alt="" width="100px" height="100px">
-          </div>
-        </div>
-  
+                <div class=" col-6 textstart">
 
+                    <h3 class=" m-0 p-0 mt-3">وزارة الداخلية المصرية</h3>
+                    <h3 class=" m-0 p-0 my-2">{{ date | date : 'medium' }}</h3>
+                </div>
 
-
-
-
-        <section class="dataPirint">
-
-            <div class="d-flex justify-content-center align-content-cenetr">
-                <h1 class="text-center fw-bolder m-4">  بيانات السجين {{selectedPresioner.name}}  </h1>
-
-                <img [src]="imageUrl" alt="" width="100px" height="100px" style="border-radius :  50%;">
+                <div class=" col-6 text-end">
+                    <img src="assets\images\logo.png" alt="" width="100px" height="100px">
+                </div>
             </div>
 
-            <div class="dialog mt-5" dir="rtl">
-                <div class="row">
-                    <div class=" col-md-4 col-12 pe-1 my-3">
-                        <div class="d-flex justify-content-start align-content-cenetr">
-                            <label for="">اسم النزيل  :  </label>
-                            <p>{{selectedPresioner.name}}</p>
-                        </div>
+
+
+
+
+
+            <section class="dataPirint">
+
+                <div class="d-flex justify-content-center align-content-cenetr">
+                    <h1 class="text-center fw-bolder m-4"> بيانات السجين {{selectedPresioner.name}} </h1>
+
+                    <div *ngIf="imageUrl.length > 3">
+                        <img [src]="imageUrl" alt="" width="100px" height="100px" style="border-radius :  50%;">
                     </div>
-        
-        
-                    <div class=" col-md-4 col-12 pe-1 my-3">
-                        <div class="d-flex justify-content-start align-content-cenetr">
-                            <label for="">السن   :  </label>
-                            <p>{{selectedPresioner.age}}</p>
-                        </div>
+                    <div *ngIf="imageUrl.length < 3">
+                        <img src="assets\images\profile.jpg" alt="" width="100px" height="100px"
+                            style="border-radius :  50%;">
                     </div>
-        
-                    <div class=" col-md-4 col-12 pe-1 my-3">
-                        <div class="d-flex justify-content-start align-content-cenetr">
-                            <label for="">العنوان  :  </label>
-                            <p>{{selectedPresioner.adress}}</p>
+                </div>
+
+                <div class="dialog mt-5" dir="rtl">
+                    <div class="row">
+                        <div class=" col-md-4 col-12 pe-1 my-3">
+                            <div class="d-flex justify-content-start align-content-cenetr">
+                                <label for="">اسم النزيل : </label>
+                                <p>{{selectedPresioner.name}}</p>
+                            </div>
                         </div>
-                    </div>
-        
-        
-                    <div class=" col-md-4 col-12 pe-1 my-3">
-                        <div class="d-flex justify-content-start align-content-cenetr">
-                            <label for="">المهنة  :  </label>
-                            <p>{{selectedPresioner.judgmentTitle}}</p>
+
+
+                        <div class=" col-md-4 col-12 pe-1 my-3">
+                            <div class="d-flex justify-content-start align-content-cenetr">
+                                <label for="">السن : </label>
+                                <p>{{selectedPresioner.age || 'لا يوجد'}}</p>
+                            </div>
                         </div>
-                    </div>
-        
-        
-        
-                    <div class=" col-md-4 col-12 pe-1 my-3">
-                        <div class="d-flex justify-content-start align-content-cenetr">
-                            <label for="">الرقم القومى  :  </label>
-                            <p>{{selectedPresioner.nationalNumber}}</p>
+
+                        <div class=" col-md-4 col-12 pe-1 my-3">
+                            <div class="d-flex justify-content-start align-content-cenetr">
+                                <label for="">العنوان : </label>
+                                <p>{{selectedPresioner.adress }}</p>
+                            </div>
                         </div>
-                    </div>
-        
-        
-        
-                    <div class=" col-md-4 col-12 pe-1 my-3">
-                        <div class="d-flex justify-content-start align-content-cenetr">
-                            <label for=""> التهمة  :  </label>
-                            <p>{{selectedPresioner.accusation}}</p>
+
+
+                        <div class=" col-md-4 col-12 pe-1 my-3">
+                            <div class="d-flex justify-content-start align-content-cenetr">
+                                <label for="">المهنة : </label>
+                                <p>{{selectedPresioner.judgmentTitle || 'لا يوجد'}}</p>
+                            </div>
                         </div>
-                    </div>
-        
-        
-        
-                    <div class=" col-md-4 col-12 pe-1 my-3">
-                        <div class="d-flex justify-content-start align-content-cenetr">
-                            <label for="">الحكم  :  </label>
-                            <p>{{selectedPresioner.judgmentTitle}}</p>
+
+
+
+                        <div class=" col-md-4 col-12 pe-1 my-3">
+                            <div class="d-flex justify-content-start align-content-cenetr">
+                                <label for="">الرقم القومى : </label>
+                                <p>{{selectedPresioner.nationalNumber || 'لا يوجد'}}</p>
+                            </div>
                         </div>
-                    </div>
-        
-        
-                    <div class=" col-md-4 col-12 pe-1 my-3">
-                        <div class="d-flex justify-content-start align-content-cenetr">
-                            <label for="">رقم القضية  :  </label>
-                            <p>{{selectedPresioner.kadyaNumber}}</p>
+
+
+
+                        <div class=" col-md-4 col-12 pe-1 my-3">
+                            <div class="d-flex justify-content-start align-content-cenetr">
+                                <label for=""> التهمة : </label>
+                                <p>{{selectedPresioner.accusation}}</p>
+                            </div>
                         </div>
-                    </div>
-        
-        
-                    <div class=" col-md-4 col-12 pe-1 my-3">
-                        <div class="d-flex justify-content-start align-content-cenetr">
-                            <label for="">رقم الملف  :  </label>
-                            <p>{{selectedPresioner.fileNumber}}</p>
+
+
+
+                        <div class=" col-md-4 col-12 pe-1 my-3">
+                            <div class="d-flex justify-content-start align-content-cenetr">
+                                <label for="">الحكم : </label>
+                                <p>{{selectedPresioner.judgmentTitle || 'لا يوجد'}}</p>
+                            </div>
                         </div>
-                    </div>
-        
-                    <div class=" col-md-4 col-12 pe-1 my-3">
-                        <div class="d-flex justify-content-start align-content-cenetr">
-                            <label for="">تاريخ الجلسة  :  </label>
-                            <p>{{selectedPresioner.galsaDate | date  :  'dd/MM/YYYY'}}</p>
+
+
+                        <div class=" col-md-4 col-12 pe-1 my-3">
+                            <div class="d-flex justify-content-start align-content-cenetr">
+                                <label for="">رقم الملف : </label>
+                                <p>{{selectedPresioner.fileNumber }}</p>
+                            </div>
                         </div>
-                    </div>
-        
-                    <div class=" col-md-4 col-12 pe-1 my-3">
-                        <div class="d-flex justify-content-start align-content-cenetr">
-                            <label for="">تاريخ الدخول  :  </label>
-                            <p>{{selectedPresioner.startDate | date  :  'dd/MM/YYYY'}}</p>
+
+                        <div class=" col-md-4 col-12 pe-1 my-3">
+                            <div class="d-flex justify-content-start align-content-cenetr">
+                                <label for="">تاريخ الجلسة : </label>
+                                <p>{{(selectedPresioner.galsaDate | date : 'dd/MM/YYYY') || 'لا يوجد'}}</p>
+                            </div>
                         </div>
-                    </div>
-        
-        
-                    <div class=" col-md-4 col-12 pe-1 my-3">
-                        <div class="d-flex justify-content-start align-content-cenetr">
-                            <label for="">تاريخ الخروج  :  </label>
-                            <p>{{selectedPresioner.endDate | date  :  'dd/MM/YYYY'}}</p>
+
+                        <div class=" col-md-4 col-12 pe-1 my-3">
+                            <div class="d-flex justify-content-start align-content-cenetr">
+                                <label for="">تاريخ الدخول : </label>
+                                <p>{{(selectedPresioner.startDate | date : 'dd/MM/YYYY') || 'لا يوجد'}}</p>
+                            </div>
                         </div>
-                    </div>
-        
-                    <div class=" col-md-4 col-12 pe-1 my-3">
-                        <div class="d-flex justify-content-start align-content-cenetr">
-                            <label for="">الجهة الخارجية  :  </label>
-                            <p>{{selectedPresioner.outSource || ' لا يوجد '}}</p>
+
+
+                        <div class=" col-md-4 col-12 pe-1 my-3">
+                            <div class="d-flex justify-content-start align-content-cenetr">
+                                <label for="">تاريخ الخروج : </label>
+                                <p>{{(selectedPresioner.endDate | date : 'dd/MM/YYYY') || 'لا يوجد'}}</p>
+                            </div>
+                        </div>
+
+                        <div class=" col-md-4 col-12 pe-1 my-3">
+                            <div class="d-flex justify-content-start align-content-cenetr">
+                                <label for="">الجهة الخارجية : </label>
+                                <p>{{selectedPresioner.outSource || ' لا يوجد '}}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-        
-            </div>
+            </section>
 
-        </section>
-  
-      </div>
-      <div class="container-fluid" style="width :  95%;">
-        <div class="d-flex justify-content-end px-5 m-0 p-0">
         </div>
-      </div>
+        <div class="container-fluid" style="width :  95%;">
+            <div class="d-flex justify-content-end px-5 m-0 p-0">
+            </div>
+        </div>
     </div>
     <div class="d-flex justify-content-between  px-5 my-3">
         <h4 class="text-center m-0 p-0">{{user}}</h4>
-      <button [hidden]="BtnPrint" class="btn btn-primary m-3" style="width :  150px;" (click)="SavePDf()">طباعة</button>
+        <button [hidden]="BtnPrint" class="btn btn-primary m-3" style="width :  150px;"
+            (click)="SavePDf()">طباعة</button>
     </div>
-  
-  </section>
+
+</section>

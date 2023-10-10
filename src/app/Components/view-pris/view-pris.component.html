@@ -20,7 +20,6 @@
                 <tr>
                     <th></th>
                     <th style="text-align: center;">تاريخ الخروج</th>
-                    <th style="text-align: center;">رقم القضية</th>
                     <th style="text-align: center;">الحكم</th>
                     <th style="text-align: center;">وجه الاتهام</th>
                     <th style="text-align: center;">الرقم القومى</th>
@@ -28,15 +27,22 @@
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-item>
-                <tr [class.bg-danger]="item.endDate < currentDate" [class.text-white]="item.endDate < currentDate">
-                    <td class="text-center"><a class="btn" [class.btn-outline-primary]="item.endDate > currentDate"
-                            [class.btn-outline-light]="item.endDate < currentDate"
+                <tr 
+                [class.bg-warning]="item.endDate > dayBeroreToday && item.endDate < currentDate"
+                [class.bg-danger]="item.endDate > currentDate && !(item.endDate > dayBeroreToday && item.endDate < currentDate)"
+                [class.text-white]="(item.endDate > dayBeroreToday && item.endDate < currentDate) || (item.endDate > currentDate && !(item.endDate > dayBeroreToday && item.endDate < currentDate))"
+                >
+                    <td class="text-center"><a class="btn" 
+                        [class.btn-outline-light]="(item.endDate > dayBeroreToday && item.endDate < currentDate) || (item.endDate > currentDate && !(item.endDate > dayBeroreToday && item.endDate < currentDate))"
+
+                        [class.btn-outline-primary]="!((item.endDate > dayBeroreToday && item.endDate < currentDate) || (item.endDate > currentDate && !(item.endDate > dayBeroreToday && item.endDate < currentDate)))"
+
+
                             (click)="selectedPrizenoer = item;display = true"><i class="bi bi-sliders"></i></a></td>
                     <td style="text-align: center;">{{ formatedFun (item.endDate) }}</td>
-                    <td style="text-align: center;">{{ item.kadyaNumber }}</td>
-                    <td style="text-align: center;">{{ item.judgmentTitle }}</td>
+                    <td style="text-align: center;">{{ item.judgmentTitle || 'لا يوجد'}}</td>
                     <td style="text-align: center;">{{ item.accusation }}</td>
-                    <td style="text-align: center;">{{ item.nationalNumber }}</td>
+                    <td style="text-align: center;">{{ item.nationalNumber || 'لا يوجد' }}</td>
                     <td style="text-align: center;">{{ item.name }}</td>
                 </tr>
             </ng-template>

@@ -20,6 +20,7 @@ export interface Prizenor {
     outSource? : string
     imgUrl?:string
     notes?:string
+    oneDayBeforeSpecificDate?:Date
 }
 
 export interface User {

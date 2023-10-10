@@ -18,8 +18,12 @@ export class GalsaComponent {
   display2: boolean = false
   selectedPrizenoer: Prizenor = {} as Prizenor
   currentDate: string;
+today = new Date()
+dayBeroreToday:string
   constructor(private datePipe: DatePipe , private api: ApiService , private router: Router) { 
-    this.currentDate =this.datePipe.transform(new Date(), 'yyyy-MM-ddTHH:mm:ss.SSSZ', 'Africa/Cairo') ?? ''
+    this.dayBeroreToday =  this.datePipe.transform( new Date(this.today.getTime() -(2*86400000)), 'yyyy-MM-ddTHH:mm:ss.SSSZ', 'Africa/Cairo') ?? ''
+  
+    this.currentDate =  this.datePipe.transform( new Date(), 'yyyy-MM-ddTHH:mm:ss.SSSZ', 'Africa/Cairo') ?? ''
   }
   
   ngOnInit(): void {

@@ -35,11 +35,14 @@ export class PrintComponent {
      this.api.GetPrizonersById(+id).subscribe({
       next:(data:any)=>{
         this.selectedPresioner = data
-        console.log( this.selectedPresioner.imgUrl);
-         this.imageUrl = this.sentiser.bypassSecurityTrustUrl(data.imgUrl)
-        //this.imageUrl = 'http://fahdeltaher-001-site1.atempurl.com/'+data.imgUrl;
-        this.imageUrl = 'https://localhost:7168'+data.imgUrl.split('wwwroot')[1];
-        console.log(this.imageUrl);
+        if(data.imgUrl){
+          this.imageUrl = this.sentiser.bypassSecurityTrustUrl(data.imgUrl)
+          this.imageUrl = 'https://localhost:7168'+data.imgUrl.split('wwwroot')[1];
+        }
+        else{
+          this.imageUrl=''
+        }
+
       },
       error:(err)=>{
         Swal.fire({

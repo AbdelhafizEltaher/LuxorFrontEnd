@@ -10,22 +10,28 @@
 
                     <th style="text-align: center;">تاريخ الجلسة</th>
                     <th style="text-align: center;">رقم الملف</th>
-                    <th style="text-align: center;">رقم القضية</th>
                     <th style="text-align: center;">وجه الاتهام</th>
                     <th style="text-align: center;">الرقم القومى</th>
                     <th style="text-align: center;">الاسم بالكامل</th>
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-item>
-                <tr [class.bg-danger]="item.galsaDate < currentDate" [class.text-white]="item.galsaDate < currentDate">
-                    <td class="text-center"><a class="btn" [class.btn-outline-primary]="item.galsaDate > currentDate"
-                            [class.btn-outline-light]="item.galsaDate < currentDate"
+                <tr 
+                [class.bg-danger]="item.galsaDate > dayBeroreToday && item.galsaDate < currentDate"
+                [class.bg-warning]="item.galsaDate < dayBeroreToday"
+                [class.text-white]="item.galsaDate > dayBeroreToday && item.galsaDate < currentDate" >
+                    <td class="text-center">
+                    <a class="btn" 
+                    [class.btn-outline-light]="item.galsaDate > dayBeroreToday && item.galsaDate < currentDate"
+
+                    [class.btn-outline-primary]="!(item.galsaDate > dayBeroreToday && item.galsaDate < currentDate)"
+
+
                             (click)="selectedPrizenoer = item;display = true"><i class="bi bi-sliders"></i></a></td>
                     <td style="text-align: center;">{{ formatedFun(item.galsaDate)}}</td>
                     <td style="text-align: center;">{{ item.fileNumber }}</td>
-                    <td style="text-align: center;">{{ item.kadyaNumber }}</td>
                     <td style="text-align: center;">{{ item.accusation }}</td>
-                    <td style="text-align: center;">{{ item.nationalNumber }}</td>
+                    <td style="text-align: center;">{{ item.nationalNumber || 'لا يوجد'}}</td>
                     <td style="text-align: center;">{{ item.name }}</td>
                 </tr>
             </ng-template>
